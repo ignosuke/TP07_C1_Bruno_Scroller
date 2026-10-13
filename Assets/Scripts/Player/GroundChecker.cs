@@ -10,7 +10,8 @@ public class GroundChecker : MonoBehaviour
     private float checkDistance = 0.2f; // Distancia del raycast para detectar el suelo
     private LayerMask groundLayer;
 
-    public bool IsGrounded { get; private set; }
+    private bool IsGrounded;
+    public bool GetIsGrounded() => IsGrounded;
 
     public event Action OnLanded;
     public event Action OnLeftGround;

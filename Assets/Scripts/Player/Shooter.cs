@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,10 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private PlayerSo playerData;
     private InputActionReference shootAction;
+
+    public event Action OnShot;
+
+    [SerializeField] private bool isArmed = false;
 
     private void Awake()
     {
@@ -25,6 +30,8 @@ public class Shooter : MonoBehaviour
 
     private void OnShootPerformed(InputAction.CallbackContext context)
     {
-        Debug.Log("Shoot!");
+        if (!isArmed) return;
+        
+        OnShot?.Invoke();
     }
 }

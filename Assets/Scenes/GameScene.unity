@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1282574300518230290, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282574300518230290, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1282574300518230290, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2194247179982639378, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -167,9 +179,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2936841391388706186, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: isArmed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4139882596905585856, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064881356745247667, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: isArmed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064881356745247667, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: hasWeapon
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -184,6 +208,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 880082535790465484, guid: 36c270c74e2bdc7448655830017acf22, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4141963930385000939, guid: 36c270c74e2bdc7448655830017acf22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -224,6 +252,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5129343056716729743, guid: 36c270c74e2bdc7448655830017acf22, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978577811201331044, guid: 36c270c74e2bdc7448655830017acf22, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8296828595483166571, guid: 36c270c74e2bdc7448655830017acf22, type: 3}
       propertyPath: m_Name
       value: FirstChunk
@@ -241,6 +277,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 880082535790465484, guid: d748b39ef9cb1a143bc86796416fffbe, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4141963930385000939, guid: d748b39ef9cb1a143bc86796416fffbe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -281,9 +321,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5129343056716729743, guid: d748b39ef9cb1a143bc86796416fffbe, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652403074489876653, guid: d748b39ef9cb1a143bc86796416fffbe, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8296828595483166571, guid: d748b39ef9cb1a143bc86796416fffbe, type: 3}
       propertyPath: m_Name
       value: Slab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849988617655856460, guid: d748b39ef9cb1a143bc86796416fffbe, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

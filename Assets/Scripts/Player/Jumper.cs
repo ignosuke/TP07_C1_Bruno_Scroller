@@ -137,7 +137,7 @@ public class Jumper : MonoBehaviour
     // El coyote se recarga pisando suelo, salvo en los primeros frames despues de saltar
     private void UpdateCoyote()
     {
-        if (groundChecker.IsGrounded && lockCounter <= 0f)
+        if (groundChecker.GetIsGrounded() && lockCounter <= 0f)
             coyoteCounter = coyoteTime;
         else
             coyoteCounter -= Time.deltaTime;

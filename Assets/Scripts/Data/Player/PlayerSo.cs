@@ -47,4 +47,12 @@ public class PlayerSo : ScriptableObject
     public float GetJumpBufferTime() => jumpBufferTime;
     public float GetJumpLockTime() => jumpLockTime;
     public float GetCoyoteTime() => coyoteTime;
+
+    [Header("Health")]
+    [SerializeField] private int hitpoints = 1;
+    public int GetHitpoints() => hitpoints;
+
+    [Header("Animation")]
+    [SerializeField] private float shootAnimationTime = 0.2f;
+    public float GetShootAnimationTime() => shootAnimationTime;
 }
