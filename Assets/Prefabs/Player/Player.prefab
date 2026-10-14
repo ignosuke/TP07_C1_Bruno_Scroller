@@ -88,6 +88,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3860940015057696499}
+  - {fileID: 6348256173368816683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2123209935274218106
@@ -141,6 +142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   playerData: {fileID: 11400000, guid: 509ad07b9e0a76345adb50ba8a46a013, type: 2}
+  bulletData: {fileID: 11400000, guid: 683a233474a10514983214f6d3d6dfc0, type: 2}
+  muzzlePoint: {fileID: 6348256173368816683}
+  firePoint: {fileID: 6172564137032945207}
+  isArmed: 1
 --- !u!114 &815083757511802647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   health: {fileID: 815083757511802647}
-  disableOnDeath: []
+  disableOnDeath:
+  - {fileID: 2123209935274218106}
+  - {fileID: 7429525182884474597}
+  - {fileID: 9064881356745247667}
 --- !u!114 &2936841391388706186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +192,7 @@ MonoBehaviour:
   groundChecker: {fileID: 2212479686631170335}
   shooter: {fileID: 9064881356745247667}
   health: {fileID: 815083757511802647}
+  isArmed: 1
 --- !u!212 &1282574300518230290
 SpriteRenderer:
   serializedVersion: 2
@@ -231,9 +240,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 220828825, guid: 37ad511f337f55943830e17e34c48159, type: 3}
+  m_Sprite: {fileID: -447571970, guid: 37ad511f337f55943830e17e34c48159, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -359,3 +368,66 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6369579185798426755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6172564137032945207}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6172564137032945207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369579185798426755}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6348256173368816683}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6518705726983986776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6348256173368816683}
+  m_Layer: 6
+  m_Name: MuzzlePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6348256173368816683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6518705726983986776}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.89, y: -0.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6172564137032945207}
+  m_Father: {fileID: 2194247179982639378}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

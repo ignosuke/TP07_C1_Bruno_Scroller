@@ -30,3 +30,6 @@ MonoBehaviour:
   jumpBufferTime: 0.1
   jumpLockTime: 0.08
   coyoteTime: 0.08
+  fireRate: 4
+  hitpoints: 1
+  shootAnimationTime: 0.2
