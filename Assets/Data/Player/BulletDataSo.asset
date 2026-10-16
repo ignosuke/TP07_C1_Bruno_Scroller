@@ -20,4 +20,4 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 8008423888024620518, guid: 8e7ec08d713fe51498deccbd5d1cd753, type: 3}
   destroyOnHitLayers:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 2176

@@ -53,8 +53,12 @@ public class PlayerSo : ScriptableObject
     public float GetFireRate() => fireRate;
 
     [Header("Health")]
-    [SerializeField] private int hitpoints = 1;
-    public int GetHitpoints() => hitpoints;
+    [SerializeField, Min(1)] private int maxHealth = 3;
+    [SerializeField, Min(0f)] private float invulnerabilityTime = 1f;
+    [SerializeField] private LayerMask damageLayers;   // Capas que dañan al jugador
+    public int GetMaxHealth() => maxHealth;
+    public float GetInvulnerabilityTime() => invulnerabilityTime;
+    public LayerMask GetDamageLayers() => damageLayers;
 
     [Header("Animation")]
     [SerializeField] private float shootAnimationTime = 0.2f; // Tiempo de la animacion al disparar (no confundir con la cadencia)

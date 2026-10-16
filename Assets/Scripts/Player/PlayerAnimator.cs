@@ -16,9 +16,9 @@ public class PlayerAnimator : MonoBehaviour
     };
 
     [SerializeField] private PlayerSo playerData;
-    [SerializeField] private GroundChecker groundChecker;
-    [SerializeField] private Shooter shooter;
-    [SerializeField] private Health health;
+    [SerializeField] private PlayerGroundChecker groundChecker;
+    [SerializeField] private PlayerShooter shooter;
+    [SerializeField] private PlayerHealth health;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -40,7 +40,7 @@ public class PlayerAnimator : MonoBehaviour
         shootAnimationTime = playerData.GetShootAnimationTime();
 
         if (groundChecker == null)
-            groundChecker = GetComponentInParent<GroundChecker>();
+            groundChecker = GetComponentInParent<PlayerGroundChecker>();
 
         CacheHashes();
     }

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DeathHandler : MonoBehaviour
+public class PlayerDeathHandler : MonoBehaviour
 {
-    [SerializeField] private Health health;
+    [SerializeField] private PlayerHealth health;
     [SerializeField] private MonoBehaviour[] disableOnDeath;
 
     private Rigidbody2D rb;

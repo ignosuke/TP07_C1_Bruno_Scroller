@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Rotator : MonoBehaviour
+public class PlayerRotator : MonoBehaviour
 {
     private const float MinSpeedToFlip = 0.01f; // Zona muerta: evita girar por residuos de velocidad
 

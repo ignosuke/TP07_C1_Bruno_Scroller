@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Jumper : MonoBehaviour
+public class PlayerJumper : MonoBehaviour
 {
     [SerializeField] private PlayerSo playerData;
     private InputActionReference jumpAction;
@@ -24,7 +24,7 @@ public class Jumper : MonoBehaviour
     private float lockCounter;
     private float coyoteCounter;
 
-    private GroundChecker groundChecker;
+    private PlayerGroundChecker groundChecker;
     private Rigidbody2D rb;
     private bool jumpRequested;
     private bool jumpCutRequested;
@@ -47,7 +47,7 @@ public class Jumper : MonoBehaviour
         jumpBufferTime = playerData.GetJumpBufferTime();
         jumpLockTime = playerData.GetJumpLockTime();
 
-        if (groundChecker == null) groundChecker = GetComponentInChildren<GroundChecker>();
+        if (groundChecker == null) groundChecker = GetComponentInChildren<PlayerGroundChecker>();
         rb = GetComponent<Rigidbody2D>();
     }
 

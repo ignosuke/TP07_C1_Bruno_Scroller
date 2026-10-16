@@ -31,5 +31,9 @@ MonoBehaviour:
   jumpLockTime: 0.08
   coyoteTime: 0.08
   fireRate: 4
-  hitpoints: 1
+  maxHealth: 3
+  invulnerabilityTime: 1
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 2560
   shootAnimationTime: 0.2

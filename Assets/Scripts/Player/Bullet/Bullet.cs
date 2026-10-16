@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IDamageSource
 {
     [SerializeField] private BulletSo bulletData;
 
@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     private float speed;
     private float lifetime;
-    private int damage;
+    public int Damage => bulletData.GetDamage();
 
     private LayerMask destroyOnHit;
 
@@ -19,7 +19,6 @@ public class Bullet : MonoBehaviour
 
         speed = bulletData.GetSpeed();
         lifetime = bulletData.GetLifetime();
-        damage = bulletData.GetDamage();
 
         destroyOnHit = bulletData.GetDestroyOnHitLayers();
     }

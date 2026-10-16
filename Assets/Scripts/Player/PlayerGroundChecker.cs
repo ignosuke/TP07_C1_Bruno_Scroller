@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class GroundChecker : MonoBehaviour
+public class PlayerGroundChecker : MonoBehaviour
 {
     [SerializeField] private PlayerSo playerData;
 

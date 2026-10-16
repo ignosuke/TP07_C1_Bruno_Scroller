@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Shooter : MonoBehaviour
+public class PlayerShooter : MonoBehaviour
 {
     [SerializeField] private PlayerSo playerData;
     [SerializeField] private BulletSo bulletData;
