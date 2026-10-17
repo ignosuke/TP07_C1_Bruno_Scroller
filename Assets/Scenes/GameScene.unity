@@ -504,6 +504,10 @@ PrefabInstance:
       propertyPath: isArmed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8009162331457569996, guid: f48e3e517f51a3144b7b2f6d5865a619, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 413174568}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

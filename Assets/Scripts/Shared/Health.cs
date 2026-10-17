@@ -10,8 +10,8 @@ public abstract class Health : MonoBehaviour
     public bool IsDead => currentHealth <= 0;
     public bool IsInvulnerable => invulnerabilityCounter > 0f;
 
-    public event Action<int, int> OnHealthChanged; // actual, maximo
-    public event Action OnDamaged;
+    public event Action<int, int> OnHealthChanged;  // actual, maximo
+    public event Action<Vector2> OnDamaged;         // direccion del golpe, desde la fuente hacia nosotros
     public event Action OnDied;
 
     public abstract int MaxHealth { get; }
@@ -47,7 +47,7 @@ public abstract class Health : MonoBehaviour
 
         if (!other.TryGetComponent(out IDamageSource source)) return;
 
-        TakeDamage(source.Damage);
+        TakeDamage(source.Damage, other.transform.position);
     }
 
     private bool IsInDamageLayers(int layer)
@@ -55,29 +55,43 @@ public abstract class Health : MonoBehaviour
         return (DamageLayers.value & (1 << layer)) != 0;
     }
 
-    public void TakeDamage(int amount)
+    // Sin origen: daño sin empuje (caida al vacio, veneno, etc.)
+    public void TakeDamage(int amount) => TakeDamage(amount, transform.position);
+
+    public void TakeDamage(int amount, Vector3 sourcePosition)
     {
         if (IsDead || amount <= 0) return;
 
         invulnerabilityCounter = InvulnerabilityTime;
 
+        Vector2 direction = ResolveDirection(sourcePosition);
+
         // Si algo absorbe el golpe (escudo, armadura) la vida no se toca
         if (TryAbsorbDamage(amount))
         {
-            OnDamaged?.Invoke();
+            OnDamaged?.Invoke(direction);
             return;
         }
 
         currentHealth = Mathf.Max(currentHealth - amount, 0);
 
         OnHealthChanged?.Invoke(currentHealth, MaxHealth);
-        OnDamaged?.Invoke();
+        OnDamaged?.Invoke(direction);
 
         if (IsDead)
         {
             OnDied?.Invoke();
             Die();
         }
+    }
+
+    private Vector2 ResolveDirection(Vector3 sourcePosition)
+    {
+        Vector2 direction = transform.position - sourcePosition;
+
+        if (direction.sqrMagnitude < 0.0001f) return Vector2.up; // Mismo punto: empuje neutro
+
+        return direction.normalized;
     }
 
     public void Heal(int amount)

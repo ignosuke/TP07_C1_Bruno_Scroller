@@ -60,6 +60,18 @@ public class PlayerSo : ScriptableObject
     public float GetInvulnerabilityTime() => invulnerabilityTime;
     public LayerMask GetDamageLayers() => damageLayers;
 
+    [Header("Damage Feedback")]
+    [SerializeField, Min(0f)] private float knockbackHorizontalForce = 6f;
+    [SerializeField, Min(0f)] private float knockbackVerticalForce = 4f;
+    [SerializeField, Min(0f)] private float knockbackDuration = 0.25f;
+    [SerializeField] private Color flashColor = new Color(1f, 1f, 1f, 0.3f);
+    [SerializeField, Min(0.01f)] private float flashInterval = 0.08f;
+    public float GetKnockbackHorizontalForce() => knockbackHorizontalForce;
+    public float GetKnockbackVerticalForce() => knockbackVerticalForce;
+    public float GetKnockbackDuration() => knockbackDuration;
+    public Color GetFlashColor() => flashColor;
+    public float GetFlashInterval() => flashInterval;
+
     [Header("Animation")]
     [SerializeField] private float shootAnimationTime = 0.2f; // Tiempo de la animacion al disparar (no confundir con la cadencia)
     public float GetShootAnimationTime() => shootAnimationTime;
