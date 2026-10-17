@@ -6,6 +6,7 @@ public abstract class Health : MonoBehaviour
     private int currentHealth;
     private float invulnerabilityCounter;
 
+    public int CurrentHealth => currentHealth;
     public bool IsDead => currentHealth <= 0;
     public bool IsInvulnerable => invulnerabilityCounter > 0f;
 
@@ -13,7 +14,7 @@ public abstract class Health : MonoBehaviour
     public event Action OnDamaged;
     public event Action OnDied;
 
-    protected abstract int MaxHealth { get; }
+    public abstract int MaxHealth { get; }
     protected abstract LayerMask DamageLayers { get; }
     protected virtual float InvulnerabilityTime => 0f;
 
@@ -22,6 +23,7 @@ public abstract class Health : MonoBehaviour
         currentHealth = MaxHealth;
     }
 
+    // En Start para que las barras y el HUD ya esten suscriptos cuando llega el primer valor
     protected virtual void Start()
     {
         OnHealthChanged?.Invoke(currentHealth, MaxHealth);
@@ -57,8 +59,16 @@ public abstract class Health : MonoBehaviour
     {
         if (IsDead || amount <= 0) return;
 
-        currentHealth = Mathf.Max(currentHealth - amount, 0);
         invulnerabilityCounter = InvulnerabilityTime;
+
+        // Si algo absorbe el golpe (escudo, armadura) la vida no se toca
+        if (TryAbsorbDamage(amount))
+        {
+            OnDamaged?.Invoke();
+            return;
+        }
+
+        currentHealth = Mathf.Max(currentHealth - amount, 0);
 
         OnHealthChanged?.Invoke(currentHealth, MaxHealth);
         OnDamaged?.Invoke();
@@ -77,6 +87,9 @@ public abstract class Health : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth + amount, MaxHealth);
         OnHealthChanged?.Invoke(currentHealth, MaxHealth);
     }
+
+    // Por defecto nadie absorbe nada. PlayerHealth lo usa para el escudo.
+    protected virtual bool TryAbsorbDamage(int amount) => false;
 
     protected abstract void Die();
 }
