@@ -74,8 +74,6 @@ public class PlayerKnockback : MonoBehaviour
 
     private void SetControlEnabled(bool value)
     {
-        Debug.Log($"SetControl {value} sobre {disableWhileKnocked.Length} componentes");
-
         foreach (MonoBehaviour component in disableWhileKnocked)
             component.enabled = value;
     }

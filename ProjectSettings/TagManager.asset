@@ -41,8 +41,23 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: 
+  - name: Background
     uniqueID: 593937213
+    locked: 0
+  - name: Terrain
+    uniqueID: 1829733921
+    locked: 0
+  - name: Decoration
+    uniqueID: 3202073577
+    locked: 0
+  - name: Entities
+    uniqueID: 594258145
+    locked: 0
+  - name: VFX
+    uniqueID: 1930733835
+    locked: 0
+  - name: WorldUI
+    uniqueID: 1935485781
     locked: 0
   m_RenderingLayers:
   - Default
