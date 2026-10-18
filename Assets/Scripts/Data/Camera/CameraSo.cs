@@ -6,13 +6,20 @@ public class CameraSo : ScriptableObject
     [Header("Dead Zone")]
     [SerializeField, Min(0f)] private float deadZoneWidth = 4f;   // En unidades de mundo
     [SerializeField, Min(0f)] private float deadZoneHeight = 3f;
+    public float GetDeadZoneWidth() => deadZoneWidth;
+    public float GetDeadZoneHeight() => deadZoneHeight;
 
     [Header("Follow")]
     [SerializeField, Min(0.01f)] private float smoothTime = 0.2f; // Cuanto tarda en alcanzar al jugador
     [SerializeField] private Vector2 offset = Vector2.zero;      
-
-    public float GetDeadZoneWidth() => deadZoneWidth;
-    public float GetDeadZoneHeight() => deadZoneHeight;
     public float GetSmoothTime() => smoothTime;
     public Vector2 GetOffset() => offset;
+
+    [Header("Level Bounds Padding")]
+    [SerializeField, Min(0f)] private float paddingTop = 4f;      // Aire sobre la plataforma mas alta
+    [SerializeField, Min(0f)] private float paddingBottom = 0f;
+    [SerializeField, Min(0f)] private float paddingSides = 0f;
+    public float GetPaddingTop() => paddingTop;
+    public float GetPaddingBottom() => paddingBottom;
+    public float GetPaddingSides() => paddingSides;
 }
