@@ -10,8 +10,8 @@ public abstract class Health : MonoBehaviour
     public bool IsDead => currentHealth <= 0;
     public bool IsInvulnerable => invulnerabilityCounter > 0f;
 
-    public event Action<int, int> OnHealthChanged;  // actual, maximo
-    public event Action<Vector2> OnDamaged;         // direccion del golpe, desde la fuente hacia nosotros
+    public event Action<int, int> OnHealthChanged; // actual, maximo
+    public event Action<DamageInfo> OnDamaged;
     public event Action OnDied;
 
     public abstract int MaxHealth { get; }
@@ -43,40 +43,38 @@ public abstract class Health : MonoBehaviour
     {
         if (IsDead || IsInvulnerable) return;
 
-        if (!IsInDamageLayers(other.gameObject.layer)) return;
+        int sourceLayer = other.gameObject.layer;
+
+        if (!DamageLayers.Contains(sourceLayer)) return;
 
         if (!other.TryGetComponent(out IDamageSource source)) return;
 
-        TakeDamage(source.Damage, other.transform.position);
+        TakeDamage(new DamageInfo(source.Damage, ResolveDirection(other.transform.position), sourceLayer));
     }
 
-    private bool IsInDamageLayers(int layer)
+    // Daño directo sin fuente para debug
+    public void TakeDamage(int amount)
     {
-        return (DamageLayers.value & (1 << layer)) != 0;
+        TakeDamage(new DamageInfo(amount, Vector2.zero, gameObject.layer));
     }
 
-    // Sin origen: daño sin empuje (caida al vacio, veneno, etc.)
-    public void TakeDamage(int amount) => TakeDamage(amount, transform.position);
-
-    public void TakeDamage(int amount, Vector3 sourcePosition)
+    public void TakeDamage(DamageInfo info)
     {
-        if (IsDead || amount <= 0) return;
+        if (IsDead || info.Amount <= 0) return;
 
         invulnerabilityCounter = InvulnerabilityTime;
 
-        Vector2 direction = ResolveDirection(sourcePosition);
-
         // Si algo absorbe el golpe (escudo, armadura) la vida no se toca
-        if (TryAbsorbDamage(amount))
+        if (TryAbsorbDamage(info.Amount))
         {
-            OnDamaged?.Invoke(direction);
+            OnDamaged?.Invoke(info);
             return;
         }
 
-        currentHealth = Mathf.Max(currentHealth - amount, 0);
+        currentHealth = Mathf.Max(currentHealth - info.Amount, 0);
 
         OnHealthChanged?.Invoke(currentHealth, MaxHealth);
-        OnDamaged?.Invoke(direction);
+        OnDamaged?.Invoke(info);
 
         if (IsDead)
         {
@@ -89,7 +87,7 @@ public abstract class Health : MonoBehaviour
     {
         Vector2 direction = transform.position - sourcePosition;
 
-        if (direction.sqrMagnitude < 0.0001f) return Vector2.up; // Mismo punto: empuje neutro
+        if (direction.sqrMagnitude < 0.0001f) return Vector2.zero;
 
         return direction.normalized;
     }
@@ -102,7 +100,7 @@ public abstract class Health : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, MaxHealth);
     }
 
-    // Por defecto nadie absorbe nada. PlayerHealth lo usa para el escudo.
+    // Por defecto nadie absorbe nada. PlayerHealth lo usa para el escudo
     protected virtual bool TryAbsorbDamage(int amount) => false;
 
     protected abstract void Die();

@@ -63,6 +63,8 @@ GameObject:
   - component: {fileID: 4507338057128667276}
   - component: {fileID: 6948324110898937894}
   - component: {fileID: 8009162331457569996}
+  - component: {fileID: 6737120463099673640}
+  - component: {fileID: 4347706793456090051}
   - component: {fileID: 3613585732019559855}
   - component: {fileID: 9124953083361777817}
   - component: {fileID: 5433854523332580353}
@@ -209,6 +211,35 @@ MonoBehaviour:
   health: {fileID: 1393864646270491683}
   disableWhileKnocked:
   - {fileID: 319424475586907253}
+--- !u!114 &6737120463099673640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139882596905585856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 986b388b24ab118409effa2f9de7176d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SafePointTracker
+  playerData: {fileID: 11400000, guid: 509ad07b9e0a76345adb50ba8a46a013, type: 2}
+  groundChecker: {fileID: 3921276365787703005}
+--- !u!114 &4347706793456090051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4139882596905585856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacee152f374b7146aadd0caeed1960b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HazardRespawn
+  playerData: {fileID: 11400000, guid: 509ad07b9e0a76345adb50ba8a46a013, type: 2}
+  health: {fileID: 1393864646270491683}
+  safePointTracker: {fileID: 6737120463099673640}
 --- !u!114 &3613585732019559855
 MonoBehaviour:
   m_ObjectHideFlags: 0

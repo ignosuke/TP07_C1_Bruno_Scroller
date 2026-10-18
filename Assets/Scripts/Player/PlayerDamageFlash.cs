@@ -31,14 +31,14 @@ public class PlayerDamageFlash : MonoBehaviour
         SetFlash(false);
     }
 
-    private void HandleDamaged(Vector2 direction)
+    // Parpadea con cualquier golpe, venga de donde venga
+    private void HandleDamaged(DamageInfo info)
     {
         if (routine != null) StopCoroutine(routine);
 
         routine = StartCoroutine(Blink());
     }
 
-    // Parpadea mientras duren los frames de invulnerabilidad
     private IEnumerator Blink()
     {
         while (health.IsInvulnerable)

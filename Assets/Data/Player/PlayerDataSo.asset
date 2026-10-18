@@ -36,4 +36,16 @@ MonoBehaviour:
   damageLayers:
     serializedVersion: 2
     m_Bits: 2560
+  knockbackLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+  respawnLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  knockbackHorizontalForce: 6
+  knockbackVerticalForce: 4
+  knockbackDuration: 0.25
+  flashColor: {r: 1, g: 1, b: 1, a: 0.3}
+  flashInterval: 0.08
+  safePointInterval: 0.25
   shootAnimationTime: 0.2

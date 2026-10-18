@@ -55,10 +55,16 @@ public class PlayerSo : ScriptableObject
     [Header("Health")]
     [SerializeField, Min(1)] private int maxHealth = 3;
     [SerializeField, Min(0f)] private float invulnerabilityTime = 1f;
-    [SerializeField] private LayerMask damageLayers;   // Capas que dañan al jugador
     public int GetMaxHealth() => maxHealth;
     public float GetInvulnerabilityTime() => invulnerabilityTime;
+
+    [Header("Damage Layers")]
+    [SerializeField] private LayerMask damageLayers;      // Lethal + Enemies
+    [SerializeField] private LayerMask knockbackLayers;   // Enemies
+    [SerializeField] private LayerMask respawnLayers;     // Lethal
     public LayerMask GetDamageLayers() => damageLayers;
+    public LayerMask GetKnockbackLayers() => knockbackLayers;
+    public LayerMask GetRespawnLayers() => respawnLayers;
 
     [Header("Damage Feedback")]
     [SerializeField, Min(0f)] private float knockbackHorizontalForce = 6f;
@@ -66,11 +72,13 @@ public class PlayerSo : ScriptableObject
     [SerializeField, Min(0f)] private float knockbackDuration = 0.25f;
     [SerializeField] private Color flashColor = new Color(1f, 1f, 1f, 0.3f);
     [SerializeField, Min(0.01f)] private float flashInterval = 0.08f;
+    [SerializeField, Min(0.05f)] private float safePointInterval = 0.25f;
     public float GetKnockbackHorizontalForce() => knockbackHorizontalForce;
     public float GetKnockbackVerticalForce() => knockbackVerticalForce;
     public float GetKnockbackDuration() => knockbackDuration;
     public Color GetFlashColor() => flashColor;
     public float GetFlashInterval() => flashInterval;
+    public float GetSafePointInterval() => safePointInterval;
 
     [Header("Animation")]
     [SerializeField] private float shootAnimationTime = 0.2f; // Tiempo de la animacion al disparar (no confundir con la cadencia)

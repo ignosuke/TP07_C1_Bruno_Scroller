@@ -11,6 +11,7 @@ public class PlayerKnockback : MonoBehaviour
     private float horizontalForce;
     private float verticalForce;
     private float duration;
+    private LayerMask knockbackLayers;
 
     private Rigidbody2D rb;
     private Coroutine routine;
@@ -22,6 +23,7 @@ public class PlayerKnockback : MonoBehaviour
         horizontalForce = playerData.GetKnockbackHorizontalForce();
         verticalForce = playerData.GetKnockbackVerticalForce();
         duration = playerData.GetKnockbackDuration();
+        knockbackLayers = playerData.GetKnockbackLayers();
     }
 
     private void OnEnable()
@@ -42,11 +44,14 @@ public class PlayerKnockback : MonoBehaviour
         RestoreControl();
     }
 
-    private void HandleDamaged(Vector2 direction)
+    private void HandleDamaged(DamageInfo info)
     {
+        if (!info.IsFrom(knockbackLayers)) return; // El vacio y los peligros no empujan
+        if (info.Direction == Vector2.zero) return;
+
         if (routine != null) StopCoroutine(routine);
 
-        routine = StartCoroutine(Push(direction));
+        routine = StartCoroutine(Push(info.Direction));
     }
 
     private IEnumerator Push(Vector2 direction)

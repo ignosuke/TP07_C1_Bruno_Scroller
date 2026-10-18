@@ -31,13 +31,8 @@ public class Bullet : MonoBehaviour, IDamageSource
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!IsInMask(other.gameObject.layer)) return;
+        if (!destroyOnHit.Contains(other.gameObject.layer)) return;
 
         Destroy(gameObject);
-    }
-
-    private bool IsInMask(int layer)
-    {
-        return (destroyOnHit.value & (1 << layer)) != 0;
     }
 }
