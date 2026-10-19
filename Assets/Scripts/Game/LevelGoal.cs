@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelGoal : MonoBehaviour
 {
     [SerializeField] private UIGameManager uiManager;
-    [SerializeField] private GameObject goalPickup; // Final del nivel, no implementado todavia
+    [SerializeField] private GameObject goalPickup;
 
     private int remainingEnemies;
 

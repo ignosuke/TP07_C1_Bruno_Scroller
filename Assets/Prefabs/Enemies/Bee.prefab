@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1863749212968072997}
   - component: {fileID: 8451946481489923952}
   - component: {fileID: 5017862862090318466}
+  - component: {fileID: 3800410404926383277}
   - component: {fileID: 6636168016143203517}
   - component: {fileID: 3676421318402612770}
   - component: {fileID: 7187659902149766624}
@@ -79,6 +80,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BeeMover
   movementData: {fileID: 11400000, guid: f166a3c7dfee3d446acefd6d361939a2, type: 2}
   spriteRenderer: {fileID: 6636168016143203517}
+--- !u!114 &3800410404926383277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159675986416638482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8023fc1c6734e49a456abef6158710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDrop
+  health: {fileID: 1863749212968072997}
 --- !u!212 &6636168016143203517
 SpriteRenderer:
   serializedVersion: 2

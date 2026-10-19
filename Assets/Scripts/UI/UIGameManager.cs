@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIGameManager : MonoBehaviour
 {
     private const float GameOverDelay = 1.2f;
+    private const float VictorySlowDuration = 1.5f;
     private const int MainMenuSceneIndex = 0;
 
     [SerializeField] private PlayerHealth playerHealth;
@@ -82,8 +83,23 @@ public class UIGameManager : MonoBehaviour
         if (isRunEnded) return;
 
         isRunEnded = true;
-        victoryPanel.Open();
+        StartCoroutine(OpenAfterSlowDown(victoryPanel));
+    }
+
+    private IEnumerator OpenAfterSlowDown(UIPanel panel)
+    {
+        float elapsed = 0f;
+
+        while (elapsed < VictorySlowDuration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(1f, 0f, elapsed / VictorySlowDuration);
+
+            yield return null;
+        }
+
         Time.timeScale = 0f;
+        panel.Open();
     }
 
     private void OnPausePerformed(InputAction.CallbackContext context)

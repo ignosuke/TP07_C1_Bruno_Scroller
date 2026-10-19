@@ -27,7 +27,7 @@ public class PlayerAnimator : MonoBehaviour
     private float shootAnimationTime;
     private float shootCounter;
 
-    [SerializeField] private bool isArmed;
+    private bool isArmed = false;
     private bool isDead;
 
     private PlayerAnimationState currentState = PlayerAnimationState.Idle;
@@ -50,6 +50,7 @@ public class PlayerAnimator : MonoBehaviour
         shooter.OnShot += PlayShoot;
         health.OnDied += PlayDeath;
         health.OnRevived += PlayRevive;
+        shooter.OnArmedChanged += SetArmed;
     }
 
     private void OnDisable()
