@@ -14,6 +14,7 @@ public class PlayerHealth : Health
 
     public override int MaxHealth => playerData.GetMaxHealth();
     protected override LayerMask DamageLayers => playerData.GetDamageLayers();
+    protected override LayerMask UnavoidableDamageLayers => playerData.GetUnavoidableDamageLayers();
     protected override float InvulnerabilityTime => playerData.GetInvulnerabilityTime();
     
     protected override bool TryAbsorbDamage(int amount)

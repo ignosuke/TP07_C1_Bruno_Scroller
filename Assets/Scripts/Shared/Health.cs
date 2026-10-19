@@ -16,6 +16,7 @@ public abstract class Health : MonoBehaviour
 
     public abstract int MaxHealth { get; }
     protected abstract LayerMask DamageLayers { get; }
+    protected virtual LayerMask UnavoidableDamageLayers => 0; // Layer que ignora los frames de invulnerabilidad
     protected virtual float InvulnerabilityTime => 0f;
 
     protected virtual void Awake()
@@ -41,11 +42,14 @@ public abstract class Health : MonoBehaviour
 
     private void TryTakeDamageFrom(Collider2D other)
     {
-        if (IsDead || IsInvulnerable) return;
+        if (IsDead) return;
 
         int sourceLayer = other.gameObject.layer;
 
         if (!DamageLayers.Contains(sourceLayer)) return;
+
+        // Los hazards dañan igual aunque haya invulnerabilidad
+        if (IsInvulnerable && !UnavoidableDamageLayers.Contains(sourceLayer)) return;
 
         if (!other.TryGetComponent(out IDamageSource source)) return;
 

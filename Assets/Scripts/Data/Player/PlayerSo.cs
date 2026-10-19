@@ -59,10 +59,12 @@ public class PlayerSo : ScriptableObject
     public float GetInvulnerabilityTime() => invulnerabilityTime;
 
     [Header("Damage Layers")]
-    [SerializeField] private LayerMask damageLayers;      // Lethal + Enemies
-    [SerializeField] private LayerMask knockbackLayers;   // Enemies
-    [SerializeField] private LayerMask respawnLayers;     // Lethal
+    [SerializeField] private LayerMask damageLayers;                 // Lethal + Enemies
+    [SerializeField] private LayerMask unavoidableDamageLayers;      // Lethal
+    [SerializeField] private LayerMask knockbackLayers;              // Enemies
+    [SerializeField] private LayerMask respawnLayers;                // Lethal
     public LayerMask GetDamageLayers() => damageLayers;
+    public LayerMask GetUnavoidableDamageLayers() => unavoidableDamageLayers;
     public LayerMask GetKnockbackLayers() => knockbackLayers;
     public LayerMask GetRespawnLayers() => respawnLayers;
 

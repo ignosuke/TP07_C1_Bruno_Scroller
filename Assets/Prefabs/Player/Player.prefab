@@ -257,6 +257,7 @@ MonoBehaviour:
   - {fileID: 319424475586907253}
   - {fileID: 7846122787302441505}
   - {fileID: 3695274917124254989}
+  - {fileID: 8009162331457569996}
 --- !u!50 &9124953083361777817
 Rigidbody2D:
   serializedVersion: 5

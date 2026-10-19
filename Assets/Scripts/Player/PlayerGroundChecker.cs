@@ -12,6 +12,8 @@ public class PlayerGroundChecker : MonoBehaviour
 
     private bool IsGrounded;
     public bool GetIsGrounded() => IsGrounded;
+    private bool IsFullyGrounded;
+    public bool GetIsFullyGrounded() => IsFullyGrounded;
 
     public event Action OnLanded;
     public event Action OnLeftGround;
@@ -32,7 +34,7 @@ public class PlayerGroundChecker : MonoBehaviour
     {
         bool wasGrounded = IsGrounded;
 
-        IsGrounded = CheckGround();
+        CheckGround();
 
         if (IsGrounded && !wasGrounded)
             OnLanded?.Invoke();
@@ -41,14 +43,17 @@ public class PlayerGroundChecker : MonoBehaviour
     }
 
     // Tres rayos: centro y ambos extremos, para no perder el salto parado en el borde de una plataforma
-    private bool CheckGround()
+    private void CheckGround()
     {
         float halfWidth = feetWidth * 0.5f;
         Vector2 center = origin.position;
 
-        return CastRay(center)
-            || CastRay(center + Vector2.left * halfWidth)
-            || CastRay(center + Vector2.right * halfWidth);
+        bool centerHit = CastRay(center);
+        bool leftHit = CastRay(center + Vector2.left * halfWidth);
+        bool rightHit = CastRay(center + Vector2.right * halfWidth);
+
+        IsGrounded = centerHit || leftHit || rightHit;
+        IsFullyGrounded = centerHit && leftHit && rightHit;
     }
 
     private bool CastRay(Vector2 rayOrigin)

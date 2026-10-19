@@ -36,6 +36,9 @@ MonoBehaviour:
   damageLayers:
     serializedVersion: 2
     m_Bits: 2560
+  unavoidableDamageLayers:
+    serializedVersion: 2
+    m_Bits: 512
   knockbackLayers:
     serializedVersion: 2
     m_Bits: 2048

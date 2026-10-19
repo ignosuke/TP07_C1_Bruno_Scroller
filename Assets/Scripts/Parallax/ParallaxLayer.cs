@@ -7,9 +7,12 @@ public class ParallaxLayer : MonoBehaviour
 
     private Transform[] pieces;
     private float followFactor;
+    private float autoScrollSpeed;
     private float pieceWidth;
     private float verticalOffset;
     private float lastCameraX;
+
+    private bool IsAutoScrolling => !Mathf.Approximately(autoScrollSpeed, 0f);
 
     private void Awake()
     {
@@ -17,6 +20,7 @@ public class ParallaxLayer : MonoBehaviour
             cameraTransform = Camera.main.transform;
 
         followFactor = layerData.GetFollowFactor();
+        autoScrollSpeed = layerData.GetAutoScrollSpeed();
 
         CachePieces();
 
@@ -38,15 +42,23 @@ public class ParallaxLayer : MonoBehaviour
 
     private void LateUpdate()
     {
-        float cameraX = cameraTransform.position.x;
-        float delta = cameraX - lastCameraX;
-        lastCameraX = cameraX;
-
-        Move(delta);
-        Wrap(cameraX);
+        Move(GetShift());
+        Wrap(cameraTransform.position.x);
     }
 
-    private void Move(float delta)
+    private float GetShift()
+    {
+        float cameraX = cameraTransform.position.x;
+        float cameraDelta = cameraX - lastCameraX;
+
+        lastCameraX = cameraX;
+
+        if (IsAutoScrolling) return autoScrollSpeed * Time.deltaTime;
+
+        return cameraDelta * followFactor;
+    }
+
+    private void Move(float shift)
     {
         float y = cameraTransform.position.y + verticalOffset;
 
@@ -54,7 +66,7 @@ public class ParallaxLayer : MonoBehaviour
         {
             Vector3 position = piece.position;
 
-            position.x += delta * followFactor;
+            position.x += shift;
             position.y = y;
 
             piece.position = position;

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiHeartsDisplay : MonoBehaviour
+public class UIHeartsDisplay : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private Transform container;   // con Horizontal Layout Group

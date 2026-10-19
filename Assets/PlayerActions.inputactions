@@ -94,6 +94,35 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "173ffe84-e263-4e87-afca-f76f5e86a913",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "097c1380-6c0a-4fc0-9315-ed3a14047fd0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a4969f40-cf7a-4ab7-8df2-4701f0670dec",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

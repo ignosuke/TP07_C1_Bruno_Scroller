@@ -19,7 +19,7 @@ public class SafePointTracker : MonoBehaviour
 
     private void Update()
     {
-        if (!groundChecker.GetIsGrounded()) return;
+        if (!groundChecker.GetIsFullyGrounded()) return;
 
         counter -= Time.deltaTime;
 
