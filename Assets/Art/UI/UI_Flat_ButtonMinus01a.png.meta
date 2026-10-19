@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: ec2cab7d68406614286aae10be5ab4a8
+guid: 2a381db952869fc4d9ac15fa8dc21c1d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1453350334737186109
-    second: tilemap_packed_0
-  - first:
-      213: -5773244093850934461
-    second: tilemap_packed_1
-  - first:
-      213: -7397652778513525935
-    second: tilemap_packed_2
-  - first:
-      213: -4657764202658221571
-    second: tilemap_packed_3
+      213: 2532231083827579877
+    second: UI_Flat_ButtonMinus01a_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 5
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,67 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tilemap_packed_0
+      name: UI_Flat_ButtonMinus01a_0
       rect:
         serializedVersion: 2
-        x: 128
-        y: 97
-        width: 96
-        height: 30
+        x: 0
+        y: 0
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 32, y: 8, z: 32, w: 10}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c28bcb1299a4dbe0800000000000000
-      internalID: -1453350334737186109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilemap_packed_1
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 64
-        width: 94
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 32, y: 12, z: 32, w: 10}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 343a468a51151efa0800000000000000
-      internalID: -5773244093850934461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tilemap_packed_2
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 66
-        width: 28
-        height: 28
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 9, y: 9, z: 9, w: 9}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82ca86b13eb0420488d288f20040df21
-      internalID: -7397652778513525935
+      spriteID: 5ebceb021ca442320800000000000000
+      internalID: 2532231083827579877
       vertices: []
       indices: 
       edges: []
@@ -204,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ccf15a6212481f44a9dad2fc8d4636a8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -212,16 +159,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
-      - key: SpriteEditor.SliceOnImport
-        value: False
+      entries: []
     nameFileIdTable:
-      tilemap_packed_0: -1453350334737186109
-      tilemap_packed_1: -5773244093850934461
-      tilemap_packed_2: -7397652778513525935
-      tilemap_packed_3: -4657764202658221571
+      UI_Flat_ButtonMinus01a_0: 2532231083827579877
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

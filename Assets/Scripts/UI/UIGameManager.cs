@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,6 +25,9 @@ public class UIGameManager : MonoBehaviour
     [SerializeField] private Button pauseBackToMenu;
     [SerializeField] private Button gameOverRetry;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip clickClip;
+
     private bool isRunEnded;
 
     private void Awake()
@@ -32,10 +36,10 @@ public class UIGameManager : MonoBehaviour
         gameOverPanel.Close();
         victoryPanel.Close();
 
-        victoryBackToMenu.onClick.AddListener(GoToMenu);
-        gameOverBackToMenu.onClick.AddListener(GoToMenu);
-        pauseBackToMenu.onClick.AddListener(GoToMenu);
-        gameOverRetry.onClick.AddListener(Retry);
+        Bind(victoryBackToMenu, GoToMenu);
+        Bind(gameOverBackToMenu, GoToMenu);
+        Bind(pauseBackToMenu, GoToMenu);
+        Bind(gameOverRetry, Retry);
     }
 
     private void OnEnable()
@@ -62,6 +66,15 @@ public class UIGameManager : MonoBehaviour
         gameOverBackToMenu.onClick.RemoveAllListeners();
         pauseBackToMenu.onClick.RemoveAllListeners();
         gameOverRetry.onClick.RemoveAllListeners();
+    }
+
+    private void Bind(Button button, UnityAction action)
+    {
+        button.onClick.AddListener(() =>
+        {
+            SfxPlayer.Play(clickClip);
+            action();
+        });
     }
 
     private void HandleDeath()

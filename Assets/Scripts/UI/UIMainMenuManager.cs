@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,21 +22,22 @@ public class UIMainMenuManager : MonoBehaviour
     [Header("Credits Menu Buttons")]
     [SerializeField] private Button creditsBackButton;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip clickClip;
+
     private void Awake()
     {
-        // Main Menu abierto al inicio, el resto oculto
         mainMenuPanel.Open();
         settingsPanel.Close();
         creditsPanel.Close();
 
-        // Listeners
-        playButton.onClick.AddListener(Play);
-        settingsButton.onClick.AddListener(() => ShowOnly(settingsPanel));
-        creditsButton.onClick.AddListener(() => ShowOnly(creditsPanel));
-        exitButton.onClick.AddListener(ExitGame);
+        Bind(playButton, Play);
+        Bind(settingsButton, () => ShowOnly(settingsPanel));
+        Bind(creditsButton, () => ShowOnly(creditsPanel));
+        Bind(exitButton, ExitGame);
 
-        settingsBackButton.onClick.AddListener(() => ShowOnly(mainMenuPanel));
-        creditsBackButton.onClick.AddListener(() => ShowOnly(mainMenuPanel));
+        Bind(settingsBackButton, () => ShowOnly(mainMenuPanel));
+        Bind(creditsBackButton, () => ShowOnly(mainMenuPanel));
     }
 
     private void OnDestroy()
@@ -47,6 +49,16 @@ public class UIMainMenuManager : MonoBehaviour
 
         settingsBackButton.onClick.RemoveAllListeners();
         creditsBackButton.onClick.RemoveAllListeners();
+    }
+
+    // Suscribe la accion y le antepone el sonido de click
+    private void Bind(Button button, UnityAction action)
+    {
+        button.onClick.AddListener(() =>
+        {
+            SfxPlayer.Play(clickClip);
+            action();
+        });
     }
 
     // Botones
