@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3212837693237742477}
   - component: {fileID: 4219767480654525919}
   - component: {fileID: 681747014820403276}
+  - component: {fileID: 4915467205367338431}
   - component: {fileID: 163517407927137581}
   - component: {fileID: 8048933977783116940}
   - component: {fileID: 7189397740954841583}
@@ -34,6 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7322649155122721054}
   - {fileID: 1991069201741443183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,6 +66,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
   enemyData: {fileID: 11400000, guid: 2775700f2c5da7142a647c37995ee96a, type: 2}
+--- !u!114 &4915467205367338431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225042545220856044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e8520234edae940aeb1deef698afdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WormMover
+  movementData: {fileID: 11400000, guid: 58d5e004da529d145b9320f19a87379b, type: 2}
+  frontCheck: {fileID: 7322649155122721054}
+  spriteRenderer: {fileID: 163517407927137581}
 --- !u!212 &163517407927137581
 SpriteRenderer:
   serializedVersion: 2
@@ -115,7 +132,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1219853527, guid: 44055f70c26192840b490a2ea97a8920, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -135,10 +152,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.02
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -149,7 +166,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &7189397740954841583
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,6 +213,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.75, y: 0.4}
   m_EdgeRadius: 0
+--- !u!1 &4760207201057758203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322649155122721054}
+  m_Layer: 0
+  m_Name: FrontCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322649155122721054
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4760207201057758203}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -0.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3212837693237742477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4648779586670099521
 PrefabInstance:
   m_ObjectHideFlags: 0
